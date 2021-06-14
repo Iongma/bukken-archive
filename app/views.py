@@ -3,9 +3,9 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
-from .models import Choice, Question
+from .models import User
 
-class HomeView(generic.HomeView):
+class HomeView(generic.ListView):
     template_name = 'app/home.html'
     context_object_name = 'latest_question_list'
 
