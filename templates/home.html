@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>物件アーカイブ</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="{% static 'app/css/main.css' %}">
+	</head>
+	<body class="is-preload">
+
+		{# --Wrapper-- #}
+		<div id="wrapper">
+
+			{# --Main-- #}
+			<div id="main">
+				<div class="inner">
+
+					{# --Header-- #}
+					{%include "_header.html"%}
+
+					{# --Banner-- #}
+					<section id="banner">
+						<div class="content">
+							<header>
+								<h1>Hi, Welcome to<br />
+								My Portfolio</h1>
+								<p>A free and fully responsive site template</p>
+							</header>
+							<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
+							<ul class="actions">
+								<li><a href="#" class="button big">Learn More</a></li>
+							</ul>
+						</div>
+						<span class="image object">
+							<img src={% static 'app/images/IMG_1269.JPG'%} alt="" />
+						</span>
+					</section>
+
+					{# --Section-- #}
+					{%include "_section.html"%}
+
+				</div>
+			</div>
+
+			{# --Sidebar-- #}
+			{%include "_sidebar.html"%}
+		</div>
+
+		{# --Scripts-- #}
+			<script src={% static 'app/js/jquery.min.js' %}></script>
+			<script src={% static 'app/js/browser.min.js' %}></script>
+			<script src={% static 'app/js/breakpoints.min.js' %}></script>
+			<script src={% static 'app/js/util.js' %}></script>
+			<script src={% static 'app/js/main.js' %}></script>
+
+	</body>
+</html>

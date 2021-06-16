@@ -6,7 +6,17 @@ from django.utils import timezone
 from .models import Property, User
 
 class HomeView(generic.ListView):
-    template_name = 'base.html'
+    template_name = 'home.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        """
+        Return the last five published questions (not including those set to be
+        published in the future).
+        """
+        return Property.objects.all()
+class TopView(generic.ListView):
+    template_name = 'top.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
