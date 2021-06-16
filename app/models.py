@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.db.models.deletion import PROTECT, CASCADE
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser
@@ -23,7 +24,7 @@ class Property(models.Model):
     floor = models.CharField(max_length=100)
     age = models.CharField(max_length=10)
     detail_url = models.URLField()
-    # like = models.ManyToManyField(get_user_model(), on_delete=models.PROTECT)#良いねの数に変換
+    like = models.ManyToManyField(settings.AUTH_USER_MODEL)#良いねの数に変換
     pub_date = models.DateTimeField('date published')
     pub_date = models.DateTimeField('date published',auto_now_add=True)
 
