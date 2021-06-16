@@ -1,9 +1,11 @@
-{% extends main %}
+{% extends "base.html" %}
 
-{# --Banner-- #}
-{%include "_banner.html"%}
+{%block main%}
 
-{# --Section-- #}
-{%include "_section.html"%}
+    {# --Banner-- #}
+    {% include "_banner.html" %}
+
+    {# --Section-- #}
+    {% include "_skill.html" %}
 
 {% endblock main %}
