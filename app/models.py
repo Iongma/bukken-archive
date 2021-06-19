@@ -6,27 +6,26 @@ from django.contrib.auth.models import AbstractUser, AbstractBaseUser
 from django.utils import timezone
 import datetime
 
-
 class Property(models.Model):
-    prop_name = models.CharField(max_length=254, default="sample")
+    title= models.CharField(max_length=254, default="sample")
     area = models.CharField(max_length=10)
     address = models.CharField(max_length=254)
+    access1 = models.CharField(max_length=100)
+    access2 = models.CharField(max_length=100)
+    access3 = models.CharField(max_length=100)
+    age = models.CharField(max_length=10)
+    height = models.CharField(max_length=100)
+    floor = models.CharField(max_length=100)
     price = models.CharField(max_length=10)
     fee = models.CharField(max_length=10)
     after_fee = models.CharField(max_length=10)
     before_fee = models.CharField(max_length=10)
     madori = models.CharField(max_length=10)
     menseki = models.CharField(max_length=10)
-    access1 = models.CharField(max_length=100)
-    access2 = models.CharField(max_length=100)
-    access3 = models.CharField(max_length=100)
-    height = models.CharField(max_length=100)
-    floor = models.CharField(max_length=100)
-    age = models.CharField(max_length=10)
-    detail_url = models.URLField()
-    like = models.ManyToManyField(settings.AUTH_USER_MODEL)#良いねの数に変換
-    pub_date = models.DateTimeField('date published')
+    detail = models.URLField()
+    createted_at = models.DateTimeField()
     pub_date = models.DateTimeField('date published',auto_now_add=True)
+    like = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
         return self.prop_name

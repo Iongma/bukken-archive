@@ -7,23 +7,25 @@ from .models import Property, User
 
 class HomeView(generic.ListView):
     template_name = 'home.html'
-    context_object_name = 'latest_question_list'
+    context_object_name = 'prop_list'
+    model = Property
+    # paginate_by = 1
 
     def get_queryset(self):
-        """
-        Return the last five published questions (not including those set to be
-        published in the future).
-        """
-        return Property.objects.all()
-class TopView(generic.ListView):
+        queryset = Property.objects.all()[:100]
+        keyword = self.request.GET.get('keyword')
+        if keyword:
+            queryset = queryset.filter(Q(title__icontains=keyword) | Q(text__icontains=keyword))
+        return queryset
+
+
+
+class TopView(generic.TemplateView):
     template_name = 'top.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """
-        Return the last five published questions (not including those set to be
-        published in the future).
-        """
+
         return Property.objects.all()
 
 # class UserView(generic.UserView):

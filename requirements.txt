@@ -1,3 +1,5 @@
 Django
 gunicorn
 environ
+pandas
+django-sass

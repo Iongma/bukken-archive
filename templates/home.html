@@ -1,5 +1,17 @@
 {% extends "base.html" %}
-
 {%block main%}
+
+{% for prop in prop_list %}
+
+    <div class="content">
+        <div class="prop_item">
+            {{ prop.title }}
+            <img src="https://source.unsplash.com/random/150x100" alt="">
+
+
+        </div>
+    </div>
+
+{% endfor %}
 
 {% endblock main %}
