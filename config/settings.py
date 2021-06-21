@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_pandas',
     'django_sass',
+    'sass_processor',
     'app',
 ]
 
@@ -100,11 +101,18 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Static files
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'app/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_ROOT = f'/var/www/{PROJECT_NAME}/static'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# SASS
+SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
+SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.(sass|scss)$'
+SASS_PRECISION = 8
+SASS_OUTPUT_STYLE = 'compressed'
+SASS_TEMPLATE_EXTS = ['.html', '.haml']
 
 # ファイルの保管先ディレクトリ
 MEDIA_URL = '/media/'

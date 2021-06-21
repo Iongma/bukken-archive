@@ -1,17 +1,59 @@
 {% extends "base.html" %}
 {%block main%}
 
+<div class="prop-contents">
 {% for prop in prop_list %}
+    <div class="prop-content">
+        <div class="prop-info">
+            <div class="prop-head">
+                <div class="title">
+                    {{ prop.title }}
+                </div>
+                <div class="like">
+                    <div class="icon solid fa-thumbs-up fa-2x">
+                        <!-- like icon -->
+                    </div>
+                </div>
+            </div>
 
-    <div class="content">
-        <div class="prop_item">
-            {{ prop.title }}
-            <img src="https://source.unsplash.com/random/150x100" alt="">
+            <div class="prop-body">
+                <div class="prop-image">
+                    <img src="https://source.unsplash.com/random/600x400" alt="">
+                </div>
+                <div class="prop-detail">
+                    <ul class="prop-address">
+                        <li class="prop-address-li"><span class="icon solid fa-map-marker-alt"></span>{{prop.address}}</li>
+                        <li><span class="icon solid fa-subway"></span>{{prop.access1}}</li>
+                        <li><span class="icon solid fa-subway"></span>{{prop.access2}}</li>
+                        <li><span class="icon solid fa-subway"></span>{{prop.access3}}</li>
+                    </ul>
+                </div>
+            </div>
 
-
+            <div class="room-body">
+                <div class="room-content">
+                    <div class="room-fee-info">
+                        <span class="price">家賃：{{prop.price}}</span>
+                        <span class="fee">管理費：{{prop.fee}}</span>
+                        <span class="before-fee">敷金：{{prop.before_fee}}</span>
+                        <span class="after-fee">礼金：{{prop.after_fee}}</span>
+                    </div>
+                    <dev class="room-main-info">
+                        <span class="age">築年数：{{prop.age}}</span>
+                        <span class="height">建物高さ：{{prop.height}}</span>
+                        <span class="floor">階層：{{prop.floor}}</span>
+                        <span></span>
+                    </dev>
+                    <div class="room-info">
+                        <span class="updated-date">更新日時：{{prop.createted_at}}</span>
+                        <span></span>
+                        <span></span>
+                        <a href="{{prop.detail}}">詳細</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
 {% endfor %}
-
+</div>
 {% endblock main %}

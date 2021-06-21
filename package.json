@@ -1,7 +1,6 @@
 {
   "name": "bukken-archive",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,9 +11,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Iongma/bukken-archive/issues"
   },
-  "homepage": "https://github.com/Iongma/bukken-archive#readme"
+  "homepage": "https://github.com/Iongma/bukken-archive#readme",
+  "description": ""
 }

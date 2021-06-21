@@ -12,8 +12,9 @@ class HomeView(generic.ListView):
     # paginate_by = 1
 
     def get_queryset(self):
-        queryset = Property.objects.all()[:100]
+        queryset = Property.objects.all()[:5]
         keyword = self.request.GET.get('keyword')
+
         if keyword:
             queryset = queryset.filter(Q(title__icontains=keyword) | Q(text__icontains=keyword))
         return queryset
