@@ -2282,9 +2282,9 @@ button,
 
 .prop-content{
   margin:0px 0px 20px 0px;
-  padding:5px;
-  border:1px solid #333;
-  border-radius: 3% / 30%;
+  padding:5px 10px;
+  border-radius: 3% / 20%;
+  box-shadow: 0px 3px 15px rgba(0,0,0,.8)
 }
 
 .prop-head{
