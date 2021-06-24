@@ -2275,71 +2275,114 @@ button,
 /* prop content */
 
 .prop-contents{
-  padding:10px 0px 20px 0px;
+  padding:20px 0px;
   margin:0px auto;
   max-width:600px;
-  font-size:2vw;
-  background-color:aqua;
 }
 
 .prop-content{
-  margin:0px 0px 10px 0px;
-  padding:0px 5px;
-  outline:1px solid;
-  background-color:blanchedalmond;
+  margin:0px 0px 20px 0px;
+  padding:5px;
+  border:1px solid #333;
+  border-radius: 3% / 30%;
 }
 
 .prop-head{
   display:flex;
-  justify-content:space-between;
+  justify-content:space-around;
   align-items: center;
-  padding:5px 0px 5px 0px;
+  padding:5px 0px;
 }
 
 .title{
-  font-size:4vw;
+  font-size:1.2rem;
+  flex:1;
+}
+.like{
+  padding-right:10px;
 }
 
 .prop-body{
   display:flex;
 }
-.prop-image{
-  width:40%;
 
+.prop-image{
+  width:120px;
 }
 
 .prop-image > img{
   width:100%;
   max-width: 100%;
   height: auto;
+  border-radius: 15px;
 }
 
+.prop-detail{
+  flex:1;
+}
 .prop-address{
   list-style: none;
+  display:flex;
+  flex-direction:column;
+
 }
 .prop-address > li{
-  height:2em
+  font-size:0.7rem;
+  padding:2px 0px;
 }
 
 .prop-address :first-child{
-  padding-bottom:1.5rem;
+  padding-bottom:0.5rem;
 }
 
 .room-fee-info{
   display:flex;
   padding:0em 0em;
   align-items:center;
-  justify-content:space-between;
+  justify-content:space-around;
+  font-size:1rem;
 }
 
 .room-main-info{
   display:flex;
-  padding:0em 0em;
-  align-items:center;  justify-content:space-between;
-}
+/*   padding:0em 0em; */
+  align-items:center;
+  justify-content:space-around;
+  font-size:1rem;
+ }
 
 .room-info{
   display:flex;
-  padding:0em 0em;
-  align-items:center;  justify-content:space-around;
+/*   padding:0em 0em; */
+  align-items:center;
+  justify-content:space-around;
+}
+.prop-updated-date{
+  font-size:0.5rem;
+  text-align:right;
+  padding-right:10px;
+}
+
+@media (min-width:700px){
+  .title{
+    font-size:2rem;
+  }
+  .prop-image{
+    width:250px;
+  }
+  .prop-address > li{
+    font-size:1.5rem;
+    padding:5px 0px;
+  }
+  .room-fee-info{
+    font-size:1.5rem;
+  }
+  .room-main-info{
+    font-size:1.5rem;
+    padding-bottom:10px
+  }
+  .prop-updated-date{
+    font-size:1rem
+  }
+
 }

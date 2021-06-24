@@ -7,12 +7,10 @@
         <div class="prop-info">
             <div class="prop-head">
                 <div class="title">
-                    {{ prop.title }}
+                    <a href="{{prop.detail}}">{{ prop.title }}</a>
                 </div>
                 <div class="like">
-                    <div class="icon solid fa-thumbs-up fa-2x">
-                        <!-- like icon -->
-                    </div>
+                    <div class="icon solid fa-thumbs-up fa-2x"></div>
                 </div>
             </div>
 
@@ -39,16 +37,12 @@
                         <span class="after-fee">礼金：{{prop.after_fee}}</span>
                     </div>
                     <dev class="room-main-info">
-                        <span class="age">築年数：{{prop.age}}</span>
-                        <span class="height">建物高さ：{{prop.height}}</span>
-                        <span class="floor">階層：{{prop.floor}}</span>
+                        <span>築年数：{{prop.age}}</span>
+                        <span>建物高さ：{{prop.floor}} / {{prop.height}}</span>
                         <span></span>
                     </dev>
-                    <div class="room-info">
-                        <span class="updated-date">更新日時：{{prop.createted_at}}</span>
-                        <span></span>
-                        <span></span>
-                        <a href="{{prop.detail}}">詳細</a>
+                    <div class="prop-updated-date">
+                        <span>更新日時：{{prop.createted_at}}</span>
                     </div>
                 </div>
             </div>
