@@ -8,6 +8,8 @@ app_name = 'app'
 urlpatterns = [
     path('', views.TopView.as_view(), name='top'),
     path('home', views.HomeView.as_view(), name='home'),
+    # path('likes/<int:pk>/', views.LikesView.as_view(), name='likes'),
+    # path('bookmark', view.BookmarkView.as_view(), name='bookmark'),
     # path('user', views.IndexView.as_view(), name='user'),
     # path('user/like', views.IndexView.as_view(), name='user_like'),
 

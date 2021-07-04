@@ -3,21 +3,26 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.db.models import Q
 from .models import Property, User
+from django.contrib import messages
 
 class HomeView(generic.ListView):
     template_name = 'home.html'
     context_object_name = 'prop_list'
     model = Property
-    # paginate_by = 1
+    # paginate_by = 20
 
     def get_queryset(self):
-        queryset = Property.objects.all()[:5]
-        keyword = self.request.GET.get('keyword')
+        queryset = Property.objects.all()
+        query = self.request.GET.get('query')
 
-        if keyword:
-            queryset = queryset.filter(Q(title__icontains=keyword) | Q(text__icontains=keyword))
-        return queryset
+        if query:
+            queryset = queryset.filter(
+                Q(title__icontains=query) | Q(address__icontains=query) | Q(access1__icontains=query)
+            )
+            # messages.add_message(self.request, messages.INFO, query)
+        return queryset[:20]
 
 
 
@@ -28,6 +33,13 @@ class TopView(generic.TemplateView):
     def get_queryset(self):
 
         return Property.objects.all()
+
+class LikesView(generic.TemplateView):
+    template_name = ''
+
+class BookmarkView(generic.TemplateView):
+    template_name = ''
+
 
 # class UserView(generic.UserView):
 #     model = Question

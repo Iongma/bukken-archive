@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 {%block main%}
+{% load static %}
+
+{% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        "{{ message }}" を含む検索結果:
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
 
 <div class="prop-contents">
 {% for prop in prop_list %}
@@ -10,20 +21,24 @@
                     <a href="{{prop.detail}}">{{ prop.title }}</a>
                 </div>
                 <div class="like">
-                    <div class="icon solid fa-thumbs-up fa-2x"></div>
+                    <form action="{% url 'app:top' %}" method="post">
+                        <button type="submit" name="button"><i class="icon solid fa-thumbs-up fa-2x"></i>
+                        </button>
+                        {% csrf_token %}
+                    </form>
                 </div>
             </div>
 
             <div class="prop-body">
                 <div class="prop-image">
-                    <img src="https://source.unsplash.com/random/600x400" alt="">
+                    <img src={% static 'app/images/IMG_1269.JPG'%} alt="">
                 </div>
                 <div class="prop-detail">
                     <ul class="prop-address">
-                        <li class="prop-address-li"><span class="icon solid fa-map-marker-alt"></span>{{prop.address}}</li>
-                        <li><span class="icon solid fa-subway"></span>{{prop.access1}}</li>
-                        <li><span class="icon solid fa-subway"></span>{{prop.access2}}</li>
-                        <li><span class="icon solid fa-subway"></span>{{prop.access3}}</li>
+                        <li class="prop-address-li"><span class="icon solid fa-map-marker-alt"> </span>{{prop.address}}</li>
+                        <li><span class="icon solid fa-subway"> </span>{{prop.access1}}</li>
+                        <li><span class="icon solid fa-subway"> </span>{{prop.access2}}</li>
+                        <li><span class="icon solid fa-subway"> </span>{{prop.access3}}</li>
                     </ul>
                 </div>
             </div>

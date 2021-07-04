@@ -16,5 +16,8 @@
     "url": "https://github.com/Iongma/bukken-archive/issues"
   },
   "homepage": "https://github.com/Iongma/bukken-archive#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@vue/cli": "^4.5.13"
+  }
 }

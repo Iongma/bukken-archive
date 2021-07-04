@@ -26,19 +26,21 @@ class Property(models.Model):
     createted_at = models.DateTimeField()
     pub_date = models.DateTimeField('date published',auto_now_add=True)
     like = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    # pred_price = models.IntegerField(max_length=10, default=0, blank=True)
+
 
     def __str__(self):
         return self.prop_name
 
 class User(AbstractUser):
-    name = models.CharField('username', max_length=254, default="Iongma")
+    name = models.CharField('username', max_length=254, default="yourName")
     email = models.EmailField(max_length = 254, unique=True, null=False, blank=False)
     password = models.CharField('password', max_length=128)
     like = models.ManyToManyField(Property, blank=True)
     is_staff = models.BooleanField('staff status', default=False)
     is_superuser = models.BooleanField('superuser status', default=False)
     join_date = models.DateTimeField('date joined', default=timezone.now)
-    last_date = models.DateField('last login', blank=True, null=True)
+    last_date = models.DateField('last login', blank=True)
 
     def __str__(self):
         return self.name
