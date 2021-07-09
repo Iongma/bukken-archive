@@ -21,11 +21,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django_pandas',
     'django_sass',
     'sass_processor',
     'app',
 ]
+
 
 AUTH_USER_MODEL = 'app.User'
 
@@ -52,6 +57,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # `allauth` needs this from django
+                # 'django.template.context_processors.request',
             ],
         },
     },
@@ -86,7 +93,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -107,16 +113,32 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'app/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_ROOT = f'/var/www/{PROJECT_NAME}/static'
 
-# SASS
-SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
-SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.(sass|scss)$'
-SASS_PRECISION = 8
-SASS_OUTPUT_STYLE = 'compressed'
-SASS_TEMPLATE_EXTS = ['.html', '.haml']
-
 # ファイルの保管先ディレクトリ
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # なにかわからん
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+##################
+##Authentication##
+##################
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = 'app:home'
+ACCOUNT_LOGOUT_REDIRECT_URL= 'app:home'
+
+# allauth settings
+SITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'email' # 認証方法をメールアドレスにする
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None # usernameフィールドの有無
+ACCOUNT_USERNAME_REQUIRED = False # ユーザー名を要求しない
+ACCOUNT_EMAIL_REQUIRED = True # メールアドレスの要求
+ACCOUNT_LOGOUT_ON_GET = True #ログアウトの確認を非表示にする
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # 登録時のメール認証の有無
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

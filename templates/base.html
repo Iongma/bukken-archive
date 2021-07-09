@@ -1,40 +1,31 @@
 {% load static %}
-{% load sass_tags %}
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Prop archives</title>
+		<title>Housing archives</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="{% static 'app/css/main.css' %}">
 	</head>
 	<body class="is-preload">
-
-		{# --Wrapper-- #}
 		<div id="wrapper">
-
-			{# --Main-- #}
 			<div id="main">
 				<div class="inner">
-
-					{# --Header-- #}
 					{%include "_header.html"%}
 
-					{% block main %}{% endblock %}
-
+					<div class="content">
+						{% block content %}{% endblock %}
+					</div>
 				</div>
 			</div>
-
-			{# --Sidebar-- #}
 			{%include "_sidebar.html"%}
 		</div>
 
-		{# --Scripts-- #}
-			<script src={% static 'app/js/jquery.min.js' %}></script>
-			<script src={% static 'app/js/browser.min.js' %}></script>
-			<script src={% static 'app/js/breakpoints.min.js' %}></script>
-			<script src={% static 'app/js/util.js' %}></script>
-			<script src={% static 'app/js/main.js' %}></script>
+		<script src={% static 'app/js/jquery.min.js' %}></script>
+		<script src={% static 'app/js/browser.min.js' %}></script>
+		<script src={% static 'app/js/breakpoints.min.js' %}></script>
+		<script src={% static 'app/js/util.js' %}></script>
+		<script src={% static 'app/js/main.js' %}></script>
 
 	</body>
 </html>

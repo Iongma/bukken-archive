@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+
+
+{%block title%}マイページ{%endblock%}
+
+
+{% block content%}
+<h2>マイページ</h2>
+{% if user.is_authenticated %}
+    <p><a href="{% url 'logout' %}">ログアウト</a></p>
+    <p><a href="{% url 'password_change' %}">パスワード変更</a></p>
+    {% else %}
+    <p><a href="{% url 'login' %}">ログイン</a></p>
+    <p><a href="{% url 'app:signup' %}">サインアップ</a></p>
+    <p><a href="{% url 'password_reset' %}">パスワード再設定</a></p>
+
+{% endif %}
+{% endblock%}

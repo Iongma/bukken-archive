@@ -1,16 +1,27 @@
 {% load static %}
-{% load sass_tags %}
+
 
 <div id="sidebar">
     <div class="inner">
 
     {# --Search-- #}
-        <section id="search" class="alt">
+        <div id="search" class="alt">
             <form method="get" action="#">
                 <input type="text" value="{{ request.GET.query }}" name="query" id="query" placeholder="Search" />
             </form>
             {% csrf_token %}
-        </section>
+        </div>
+
+    {# --Login/Logout-- #}
+        <div id="accounts">
+            {% if user.is_authenticated %}
+                <p><a href="{% url 'account_logout' %}">ログアウト</a></p>
+                <p><a href="{% url 'account_change_password' %}">パスワード変更</a></p>
+                {% else %}
+                <p><a href="{% url 'account_login' %}">ログイン</a></p>
+            {% endif %}
+        </div>
+
 
     {# --Menu-- #}
         <nav id="menu">
@@ -21,95 +32,95 @@
                 <li>
                     <span class="opener">Hokkaido</span>
                     <ul>
-                        <li>Hokkaido</li>
+                        <li><a href="/home/?query=Hokkaido">Hokkaido</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <span class="opener">Tohoku</span>
                     <ul>
-                        <li>Aomori</li>
-                        <li>Akita</li>
-                        <li>Iwate</li>
-                        <li>Miyagi</li>
-                        <li>Yamagata</li>
-                        <li>Fukushima</li>
+                        <li><a href="/home/?query=Aomori">Aomori</a></li>
+                        <li><a href="/home/?query=Akita">Akita</a></li>
+                        <li><a href="/home/?query=Iwate">Iwate</a></li>
+                        <li><a href="/home/?query=Miyagi">Miyagi</a></li>
+                        <li><a href="/home/?query=Yamagata">Yamagata</a></li>
+                        <li><a href="/home/?query=Fukushima">Fukushima</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <span class="opener">Kanto</span>
                     <ul>
-                        <li>Ibaraki</li>
-                        <li>Tochigi</li>
-                        <li>Gunma</li>
-                        <li>Saitama</li>
-                        <li>Chiba</li>
-                        <li>Tokyo</li>
-                        <li>Kanagawa</li>
+                        <li><a href="/home/?query=Ibaraki">Ibaraki</a></li>
+                        <li><a href="/home/?query=Tochigi">Tochigi</a></li>
+                        <li><a href="/home/?query=Gunma">Gunma</a></li>
+                        <li><a href="/home/?query=Saitama">Saitama</a></li>
+                        <li><a href="/home/?query=Chiba">Chiba</a></li>
+                        <li><a href="/home/?query=Tokyo">Tokyo</a></li>
+                        <li><a href="/home/?query=Kanagawa">Kanagawa</a></li>
                     </ul>
                 </li>
                 <li>
                     <span class="opener">Koushin-etsu</span>
                     <ul>
-                        <li>Niigata</li>
-                        <li>Nagano</li>
-                        <li>Yamanashi</li>
-                        <li>Toyama</li>
-                        <li>Ishikawa</li>
-                        <li>Fukui</li>
+                        <li><a href="/home/?query=Niigata">Niigata</a></li>
+                        <li><a href="/home/?query=Nagano">Nagano</a></li>
+                        <li><a href="/home/?query=Yamanashi">Yamanashi</a></li>
+                        <li><a href="/home/?query=Toyama">Toyama</a></li>
+                        <li><a href="/home/?query=Ishikawa">Ishikawa</a></li>
+                        <li><a href="/home/?query=Fukui">Fukui</a></li>
                     </ul>
                 </li>
                 <li>
                     <span class="opener">Tokai</span>
                     <ul>
-                        <li>Gifu</li>
-                        <li>Shizuoka</li>
-                        <li>Aichi</li>
-                        <li>Mie</li>
+                        <li><a href="/home/?query=Gifu">Gifu</a></li>
+                        <li><a href="/home/?query=Shizuoka">Shizuoka</a></li>
+                        <li><a href="/home/?query=Aichi">Aichi</a></li>
+                        <li><a href="/home/?query=Mie">Mie</a></li>
                     </ul>
                 </li>
                 <li>
                     <span class="opener">Kansai</span>
                     <ul>
-                        <li>Shiga</li>
-                        <li>Kyoto</li>
-                        <li>Osaka</li>
-                        <li>Hyogo</li>
-                        <li>Nara</li>
-                        <li>Wakayama</li>
+                        <li><a href="/home/?query=Shiga">Shiga</a></li>
+                        <li><a href="/home/?query=Kyoto">Kyoto</a></li>
+                        <li><a href="/home/?query=Osaka">Osaka</a></li>
+                        <li><a href="/home/?query=Hyogo">Hyogo</a></li>
+                        <li><a href="/home/?query=Nara">Nara</a></li>
+                        <li><a href="/home/?query=Wakayama">Wakayama</a></li>
                     </ul>
                 </li>
                 <li>
                     <span class="opener">Chugoku</span>
                     <ul>
-                        <li>Tottori</li>
-                        <li>Shimane</li>
-                        <li>Okayama</li>
-                        <li>Hiroshima</li>
-                        <li>Yamaguchi</li>
+                        <li><a href="/home/?query=Tottori">Tottori</a></li>
+                        <li><a href="/home/?query=Shimane">Shimane</a></li>
+                        <li><a href="/home/?query=Okayama">Okayama</a></li>
+                        <li><a href="/home/?query=Hiroshima">Hiroshima</a></li>
+                        <li><a href="/home/?query=Yamaguchi">Yamaguchi</a></li>
                     </ul>
                 </li>
                 <li>
                     <span class="opener">Shikoku</span>
                     <ul>
-                        <li>Tokushima</li>
-                        <li>Kagawa</li>
-                        <li>Ehime</li>
-                        <li>Kochi</li>
+                        <li><a href="/home/?query=Tokushima">Tokushima</a></li>
+                        <li><a href="/home/?query=Kagawa">Kagawa</a></li>
+                        <li><a href="/home/?query=Ehime">Ehime</a></li>
+                        <li><a href="/home/?query=Kochi">Kochi</a></li>
                     </ul>
                 </li>
                 <li>
                     <span class="opener">Kyusyu</span>
                     <ul>
-                        <li>Fukuoka</li>
-                        <li>Saga</li>
-                        <li>Nagasaki</li>
-                        <li>Kumamoto</li>
-                        <li>Oita</li>
-                        <li>Miyazaki</li>
-                        <li>Kagoshima</li>
-                        <li>Okinawa</li>
+                        <li><a href="/home/?query=Fukuoka">Fukuoka</a></li>
+                        <li><a href="/home/?query=Saga">Saga</a></li>
+                        <li><a href="/home/?query=Nagasaki">Nagasaki</a></li>
+                        <li><a href="/home/?query=Kumamoto">Kumamoto</a></li>
+                        <li><a href="/home/?query=Oita">Oita</a></li>
+                        <li><a href="/home/?query=Miyazaki">Miyazaki</a></li>
+                        <li><a href="/home/?query=Kagoshima">Kagoshima</a></li>
+                        <li><a href="/home/?query=Okinawa">Okinawa</a></li>
                     </ul>
                 </li>
                 <li>

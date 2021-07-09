@@ -1,10 +1,16 @@
+{% load static %}
 <header id="header">
-    <a href="/".html" class="logo"><strong>Prop archives</strong></a>
+    <strong><a href="/home" class="logo">Housing archives</a></strong>
     <ul class="icons">
+        {% if not user.is_authenticated %}
+        <li><a href="{% url 'account_login' %}"><span class="label">ログイン</span></a></li>
+        {% endif %}
         <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
         <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
         <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
         <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-        <li><a href="#" class="icon brands fa-medium-m"><span class="label">Mypage</span></a></li>
+        {% if user.is_authenticated %}
+        <li><a href="/mypage" class="icon brands fa-medium-m"><span class="label">Mypage</span></a></li>
+        {% endif %}
     </ul>
 </header>

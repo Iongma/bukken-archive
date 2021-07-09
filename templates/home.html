@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{%block main%}
 {% load static %}
 
-{% if messages %}
+
+{%block content%}
+
+<!-- {% if messages %}
     <ul class="messages">
     {% for message in messages %}
         <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
@@ -10,7 +12,8 @@
         </li>
     {% endfor %}
     </ul>
-{% endif %}
+{% endif %} -->
+
 
 <div class="prop-contents">
 {% for prop in prop_list %}
@@ -54,6 +57,7 @@
                     <dev class="room-main-info">
                         <span>築年数：{{prop.age}}</span>
                         <span>建物高さ：{{prop.floor}} / {{prop.height}}</span>
+                        <span>間取り：{{prop.madori}}</span>
                         <span></span>
                     </dev>
                     <div class="prop-updated-date">
@@ -65,4 +69,4 @@
     </div>
 {% endfor %}
 </div>
-{% endblock main %}
+{% endblock %}

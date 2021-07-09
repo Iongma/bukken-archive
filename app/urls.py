@@ -7,15 +7,9 @@ from django.conf.urls.static import static
 app_name = 'app'
 urlpatterns = [
     path('', views.TopView.as_view(), name='top'),
-    path('home', views.HomeView.as_view(), name='home'),
-    # path('likes/<int:pk>/', views.LikesView.as_view(), name='likes'),
-    # path('bookmark', view.BookmarkView.as_view(), name='bookmark'),
-    # path('user', views.IndexView.as_view(), name='user'),
-    # path('user/like', views.IndexView.as_view(), name='user_like'),
-
-    # path('<int:pk>/', views.DetailView.as_view(), name='detail'),
-    # path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
-    # path('<int:question_id>/vote/', views.vote, name='vote'),
+    path('home/', views.HomeView.as_view(), name='home'),
+    path('signup/', views.SignupView.as_view(), name='signup'),
+    path('mypage/', views.MypageView.as_view(), name='mypage'),
 ]
 
 # ローカルでmediaファイルを扱う場合の処理
