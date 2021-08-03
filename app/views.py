@@ -37,8 +37,11 @@ class TopView(generic.TemplateView):
 class MypageView(generic.TemplateView):
     template_name = 'mypage.html'
 
-class LikesView(generic.TemplateView):
-    template_name = ''
+class LikesView(generic.ListView):
+    template_name = 'like.html'
+    context_object_name = 'prop_list'
+    model = Property
+
 
 class BookmarkView(generic.TemplateView):
     template_name = ''

@@ -7,15 +7,15 @@ from django.utils import timezone
 import datetime
 
 class Property(models.Model):
-    title= models.CharField(max_length=254, default="sample")
+    title= models.CharField(max_length=50, default="sample")
     area = models.CharField(max_length=10)
-    address = models.CharField(max_length=254)
-    access1 = models.CharField(max_length=100)
-    access2 = models.CharField(max_length=100)
-    access3 = models.CharField(max_length=100)
+    address = models.CharField(max_length=30)
+    access1 = models.CharField(max_length=60)
+    access2 = models.CharField(max_length=60)
+    access3 = models.CharField(max_length=60)
     age = models.CharField(max_length=10)
-    height = models.CharField(max_length=100)
-    floor = models.CharField(max_length=100)
+    height = models.CharField(max_length=10)
+    floor = models.CharField(max_length=10)
     price = models.CharField(max_length=10)
     fee = models.CharField(max_length=10)
     after_fee = models.CharField(max_length=10)
