@@ -19,12 +19,12 @@ class HomeView(generic.ListView):
 
         if query:
             queryset = queryset.filter(
-                Q(area__icontains=query) | Q(title__icontains=query) | Q(address__icontains=query) | Q(access1__icontains=query)
+                Q(area__icontains=query) | \
+                Q(title__icontains=query) | \
+                Q(address__icontains=query) | \
+                Q(access1__icontains=query)
             )
-            # messages.add_message(self.request, messages.INFO, query)
         return queryset[:20]
-
-
 
 class TopView(generic.TemplateView):
     template_name = 'top.html'
@@ -42,9 +42,8 @@ class LikesView(generic.ListView):
     context_object_name = 'prop_list'
     model = Property
 
-
-class BookmarkView(generic.TemplateView):
-    template_name = ''
+# class BookmarkView(generic.TemplateView):
+#     template_name = ''
 
 class SignupView(generic.CreateView):
     form_class = SignupForm

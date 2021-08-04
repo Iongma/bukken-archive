@@ -15,10 +15,7 @@
     {# --Login/Logout-- #}
         <div id="accounts">
             {% if user.is_authenticated %}
-                <p><a href="{% url 'account_logout' %}">Logout</a></p>
-                <p><a href="{% url 'account_change_password' %}">Change Password</a></p>
-                {% else %}
-                <p><a href="{% url 'account_login' %}">Login</a></p>
+            <p><a href="{% url 'account_change_password' %}">Change Password</a></p>
             {% endif %}
         </div>
 
