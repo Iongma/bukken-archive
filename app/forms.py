@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import User
+from .models import Property, User
 
 
 class UserCreationForm(forms.ModelForm):
@@ -42,3 +42,20 @@ class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         fields = ('email',)
 
+class SearchDetailForm(forms.Form):
+    acccess_distance = forms.IntegerField(
+        label='acccess_distance',
+        widget=forms.NumberInput,
+        required=False,)
+    age = forms.IntegerField(
+        label='age',
+        widget=forms.NumberInput,
+        required=False,)
+    menseki = forms.IntegerField(
+        label='menseki',
+        widget=forms.NumberInput,
+        required=False,)
+    price = forms.IntegerField(
+        label='price',
+        widget=forms.NumberInput,
+        required=False,)

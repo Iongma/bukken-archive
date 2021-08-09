@@ -7,8 +7,8 @@ from django.utils import timezone
 import datetime
 
 class Property(models.Model):
-    title= models.CharField(max_length=50, default="sample")
-    area = models.CharField(max_length=10)
+    # id = models.UUIDField(primary_key=True)
+    title = models.CharField(max_length=50)
     address = models.CharField(max_length=30)
     access1 = models.CharField(max_length=60)
     access2 = models.CharField(max_length=60)
@@ -24,12 +24,20 @@ class Property(models.Model):
     menseki = models.CharField(max_length=10)
     detail = models.URLField()
     createted_at = models.DateTimeField()
+    realprice = models.IntegerField()
+    pred = models.IntegerField()
+    difference = models.IntegerField()
+    pred_price = models.IntegerField()
+    pred_fee = models.IntegerField()
+    pred_before_fee = models.IntegerField()
+    pred_after_fee = models.IntegerField()
+    difference_normalize = models.FloatField()
+    value_rate = models.FloatField()
     like = models.ManyToManyField(settings.AUTH_USER_MODEL)
     # pred_price = models.IntegerField(max_length=10, default=0, blank=True)
 
-
     def __str__(self):
-        return self.prop_name
+        return self.title
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
@@ -54,7 +62,6 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='email',max_length=255,unique=True,)
-    like = models.ManyToManyField(Property, blank=True)
     join_date = models.DateTimeField('date joined', default=timezone.now)
     last_date = models.DateField('last login', default=timezone.now)
     is_active = models.BooleanField(default=True)
@@ -66,6 +73,10 @@ class User(AbstractBaseUser):
     REQUIRED_FIELDS = []
 
     def __str__(self):
+        return self.email
+
+    @property
+    def username(self):
         return self.email
 
     def has_perm(self, perm, obj=None):

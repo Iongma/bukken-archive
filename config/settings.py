@@ -2,6 +2,11 @@ from pathlib import Path
 import os
 import environ
 
+# memo
+# SNS認証を追加予定
+# メールサーバー追加予定
+#
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_NAME = os.path.basename(BASE_DIR)
@@ -117,12 +122,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# なにかわからん
+# model field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-##################
 ##Authentication##
-##################
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = 'app:home'
 ACCOUNT_LOGOUT_REDIRECT_URL= 'app:home'
@@ -131,14 +134,21 @@ ACCOUNT_LOGOUT_REDIRECT_URL= 'app:home'
 SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # 認証方法をメールアドレスにする
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None # usernameフィールドの有無
-ACCOUNT_USERNAME_REQUIRED = False # ユーザー名を要求しない
+ACCOUNT_USERNAME_REQUIRED = False # ユーザー名の要求
+ACCOUNT_LOGOUT_ON_GET = True #ログアウトの確認を非表示
 ACCOUNT_EMAIL_REQUIRED = True # メールアドレスの要求
-ACCOUNT_LOGOUT_ON_GET = True #ログアウトの確認を非表示にする
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # 登録時のメール認証の有無
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # 登録時のメール認証の有無 none
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',　削除
 ]
-# Email settings
+# Email settings（実際にメールを送りたいときは以下をコメントアウト）
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Email server settings
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'sample@gmail.com'
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_USE_TLS = True
