@@ -4,7 +4,6 @@ import environ
 
 # memo
 # SNS認証を追加予定
-# メールサーバー追加予定
 #
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -33,6 +32,7 @@ INSTALLED_APPS = [
     'django_pandas',
     'django_sass',
     'sass_processor',
+    'bootstrap4',
     'app',
 ]
 

@@ -1,4 +1,8 @@
 {% load static %}
+{% load bootstrap4%}
+{% bootstrap_css%}
+{% bootstrap_javascript jquery='slim'%}
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -6,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="{% static 'app/css/main.css' %}">
+		{% block extra_css %}{% endblock%}
 	</head>
 	<body class="is-preload">
 		<div id="wrapper">
@@ -26,6 +31,6 @@
 		<script src={% static 'app/js/breakpoints.min.js' %}></script>
 		<script src={% static 'app/js/util.js' %}></script>
 		<script src={% static 'app/js/main.js' %}></script>
-
+		{% block extra_js %}{% endblock%}
 	</body>
 </html>
