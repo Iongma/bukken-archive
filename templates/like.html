@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{%block content%}
+<div class="prop-contents">
+{% for prop in prop_list %}
+    <div class="prop-content">
+        <div class="prop-info">
+            <div class="prop-head">
+                <div class="title">
+                    <a href="{{prop.detail}}">{{ prop.title }}</a>
+                </div>
+                <div class="like">
+                    <form action="{% url 'app:top' %}" method="post">
+                        <button type="submit" name="button"><i class="icon solid fa-thumbs-up fa-2x"></i></button>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+
+            <div class="prop-body">
+                <div class="prop-image">
+                    <img src={% static 'app/images/IMG_1269.JPG'%} alt="">
+                </div>
+                <div class="prop-detail">
+                    <ul class="prop-address">
+                        <li class="prop-address-li"><span class="icon solid fa-map-marker-alt"> </span>{{prop.address}}</li>
+                        <li><span class="icon solid fa-subway"> </span>{{prop.access1}}</li>
+                        <li><span class="icon solid fa-subway"> </span>{{prop.access2}}</li>
+                        <li><span class="icon solid fa-subway"> </span>{{prop.access3}}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="room-body">
+                <div class="room-content">
+                    <dev class="room-main-info">
+                        <span>【築年数】築{{prop.age}}年</span>
+                        <span>【階層】{{prop.floor}}階 / {{prop.height}}</span>
+                        <span></span>
+                    </dev>
+                    <dev class="room-main-info">
+                        <span>【間取り】{{prop.madori}}</span>
+                        <span>【専有面積】{{prop.menseki}}m2</span>
+                        <span></span>
+                    </dev>
+
+                    <div><span>&lt;指定値&gt;</span></div>
+                    <div class="room-fee-info">
+                        <span class="price">【家賃】{{prop.price}}</span>
+                        <span class="fee">【管】{{prop.fee}}</span>
+                        <span class="before-fee">【敷】{{prop.before_fee}}</span>
+                        <span class="after-fee">【礼】{{prop.after_fee}}</span>
+                    </div>
+
+                    <div><span>&lt;予測値&gt;</span></div>
+                    <div class="room-fee-info">
+                        <span class="price">【家賃】{{prop.pred_price}}</span>
+                        <span class="fee">【管】{{prop.pred_fee}}</span>
+                        <span class="before-fee">【敷】{{prop.pred_before_fee}}</span>
+                        <span class="after-fee">【礼】{{prop.pred_after_fee}}</span>
+                    </div>
+
+                    <div><span>&lt;お得度合い&gt;</span></div>
+                    <div class="room-fee-info">
+                        <span class="difference">【差】{{prop.difference}}</span>
+                        <span class="difference_normalize">【偏差値】{{prop.difference_normalize}}</span>
+                        <span class="value_rate">【お得度】{{prop.value_rate}}%</span>
+                        <span></span>
+                    </div>
+
+                    <div class="prop-updated-date">
+                        <span>更新日時：{{prop.createted_at}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="{% if q %}{{q}}{% endif %}&page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&lt;</span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% if page_obj.number > 3 %}
+        <li class="page-item">
+            <a class="page-link" href="{% if q %}{{q}}{% endif %}&page=1" aria-label="First">1</a>
+        </li>
+    {% endif %}
+
+    {% if page_obj.number > 4 %}
+        <li class="page-item"><span class="page-link" aria-hidden="true">...</span></li>
+    {% endif %}
+
+    {% for link_page in page_obj.paginator.page_range %}
+    {% if link_page == page_obj.number %}
+        <li class="page-item active">
+            <a class="page-link" href="{% if q %}{{q}}{% endif %}&page={{ link_page }}">{{ link_page }}</a>
+        </li>
+    {% elif link_page < page_obj.number|add:3 and link_page > page_obj.number|add:-3 %}
+        <li class="page-item">
+            <a class="page-link" href="{% if q %}{{q}}{% endif %}&page={{ link_page }}">{{ link_page }}</a>
+        </li>
+    {% endif %}
+    {% endfor %}
+
+    {% if page_obj.number < page_obj.paginator.num_pages|add:-3 %}
+        <li class="page-item"><span class="page-link" aria-hidden="true">...</span></li>
+    {% endif %}
+
+    {% if page_obj.number < page_obj.paginator.num_pages|add:-2 %}
+        <li class="page-item">
+            <a class="page-link" href="{% if q %}{{q}}{% endif %}&page={{ page_obj.paginator.num_pages }}" aria-label="Last">{{ page_obj.paginator.num_pages}}</a>
+        </li>
+    {% endif%}
+
+    {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="{% if q %}{{q}}{% endif %}&page={{page_obj.next_page_number }}" aria-label="Next">
+                <span aria-hidden="true">&gt;</span>
+            </a>
+        </li>
+    {% endif %}
+    </ul>
+</nav>
+
+{%endblock%}

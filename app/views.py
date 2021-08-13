@@ -52,12 +52,12 @@ class HomeView(generic.ListView, generic.FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        query = self.request.GET.get('query') if self.request.GET.get('query') else ""
-        madori = self.request.GET.get('madori') if self.request.GET.get('madori') else ""
-        age = self.request.GET.get('age') if self.request.GET.get('age') else ""
-        menseki = self.request.GET.get('menseki') if self.request.GET.get('menseki') else ""
-        price = self.request.GET.get('price') if self.request.GET.get('price') else ""
-        context["q"] = f'?query={query}&madori={madori}&age={age}&menseki={menseki}&price={price}'
+        context["q"] = '?'
+        context["q"] += f'query={self.request.GET.get("query")}&' if self.request.GET.get('query') else ""
+        context["q"] += f'madori={self.request.GET.get("madori")}&' if self.request.GET.get('madori') else ""
+        context["q"] += f'age={self.request.GET.get("age")}&' if self.request.GET.get('age') else ""
+        context["q"] += f'menseki={self.request.GET.get("menseki")}&' if self.request.GET.get('menseki') else ""
+        context["q"] += f'price={self.request.GET.get("price")}&' if self.request.GET.get('price') else ""
         return context
 
 class TopView(generic.TemplateView):
@@ -70,6 +70,11 @@ class LikesView(generic.ListView):
     template_name = 'home.html'
     context_object_name = 'prop_list'
     model = Property
+
+    def get_queryset(self, **kwargs):
+        queryset = super().get_queryset(**kwargs)[:10]
+
+        return queryset
 
 class SignupView(generic.CreateView):
     form_class = SignupForm

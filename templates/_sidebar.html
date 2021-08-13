@@ -16,11 +16,11 @@
                     <label for="madori">間取り：</label>
                         <input type="text" value="{{ request.GET.madori }}" name="madori" id="madori" placeholder="Input text" />
                     <label for="age">築年数：</label>
-                        <input type="number" value="{{ request.GET.age }}" name="age" id="age" placeholder="Input Number" />
+                        <input type="text" value="{{ request.GET.age }}" name="age" id="age" placeholder="Input Number" />
                     <label for="menseki">面積：</label>
-                        <input type="number" value="{{ request.GET.menseki }}" name="menseki" id="menseki" placeholder="Input Number" />
+                        <input type="text" value="{{ request.GET.menseki }}" name="menseki" id="menseki" placeholder="Input Number" />
                     <label for="price">家賃：</label>
-                        <input type="number" value="{{ request.GET.price }}" name="price" id="price" placeholder="Input Number" />
+                        <input type="text" value="{{ request.GET.price }}" name="price" id="price" placeholder="Input Number" />
                     <br><br><button type="submit" class="btn">検索</button>
                 </form>
                 {% csrf_token %}

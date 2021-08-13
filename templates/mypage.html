@@ -5,7 +5,7 @@
 {% block content%}
 <h2>マイページ</h2>
 {% if user.is_authenticated %}
-    <p><a href="{% url 'likes'%}">いいね物件一覧</a></p>
+    <p><a href="/likes">いいね物件一覧</a></p>
     <p><a href="{% url 'account_logout' %}">ログアウト</a></p>
     <p><a href="{% url 'account_change_password' %}">パスワード変更</a></p>
 {% else %}
