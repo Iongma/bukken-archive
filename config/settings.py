@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django_sass',
     'sass_processor',
     'bootstrap4',
+    'rest_framework',
     'app',
 ]
 
