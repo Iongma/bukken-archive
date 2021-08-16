@@ -11,3 +11,4 @@ local_settings.py
 .env
 *.csv
 package.json
+node_modules

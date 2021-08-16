@@ -1,16 +1,10 @@
-from django.db.models.query import RawQuerySet
-from django.forms.forms import Form
-from django.http import HttpResponseRedirect, request
-from django.shortcuts import get_object_or_404, render
-from django.urls import reverse, reverse_lazy
-from django.views import generic
-from django.utils import timezone
-from django.db.models import Q
-from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth import get_user_model
-from .models import Property#, User
+from django.views import generic
+from django.db.models import Q
+from django.urls import reverse_lazy
 from .forms import SignupForm, SearchDetailForm
+from .models import Property
 
 
 User = get_user_model()
